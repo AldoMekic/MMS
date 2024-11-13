@@ -1,0 +1,28 @@
+/* Content and Sidebar Wrapper */
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Main Content */
+.site-content {
+    flex: 3;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    max-width: 300px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,32 @@
+/* Footer Styles */
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    max-height: 50px;
+    margin-bottom: 10px;
+}
+
+.footer-navigation .footer-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.footer-navigation .footer-menu a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer-widgets .footer-widget {
+    margin-top: 20px;
+}
+
+.footer-widgets .footer-widget a {
+    color: #aaa;
+}

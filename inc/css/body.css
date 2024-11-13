@@ -1,0 +1,27 @@
+/* Body and Layout Styles */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.site-header,
+.site-footer {
+    flex-shrink: 0;
+}
+
+.site-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center; /* Center content vertically within .site-main */
+    justify-content: center; /* Center content horizontally within .site-main */
+    padding: 20px;
+    background-color: #f4f4f4; /* Optional background color */
+}
+
+.site-content {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
