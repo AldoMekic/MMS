@@ -1,35 +1,32 @@
 /* Header Styles */
-
-
 .header-inner {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    align-items: center;
+    justify-content: space-between; /* Positions the logo to the left */
     width: 100%;
 }
 
-.site-logo img {
-    max-height: 60px;
+.site-logo {
+    flex-shrink: 0; /* Prevents the logo from shrinking */
+}
+
+.main-navigation {
+    flex-grow: 1; /* Allows the menu to take up remaining space and center it */
+    display: flex;
+    justify-content: center;
 }
 
 .main-navigation .primary-menu {
     display: flex;
     gap: 15px;
     list-style: none;
+    justify-content: center;
 }
 
 .main-navigation .primary-menu a {
     color: #333;
     text-decoration: none;
     font-weight: bold;
-}
-
-.header-widgets .header-widget {
-    display: flex;
-    gap: 10px;
-}
-
-.header-widgets .header-widget a {
-    color: #555;
-    font-size: 20px;
 }

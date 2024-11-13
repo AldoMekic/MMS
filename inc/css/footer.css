@@ -1,8 +1,12 @@
 /* Footer Styles */
-
 .footer-inner {
     max-width: 1200px;
     margin: 0 auto;
+    text-align: center; /* Centers content */
+}
+
+.footer-logo {
+    margin-bottom: 20px;
 }
 
 .footer-logo img {

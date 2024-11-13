@@ -7,11 +7,18 @@
 </head>
 <style>
     .site-header {
-    background-color: <?php echo get_theme_mod( 'header_background_color', '#333' ); ?>;
-    padding: 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        background-color: <?php echo get_theme_mod('header_background_color', '#333'); ?>;
+    }
+
+    .main-navigation .primary-menu a {
+        color: <?php echo get_theme_mod('header_text_color', '#ffffff'); ?>;
+    }
+
+    .site-logo img {
+    width: <?php echo get_theme_mod('logo_width', 250); ?>px;
+    height: <?php echo get_theme_mod('logo_height', 60); ?>px;
+    max-width: 100%;
+    max-height: 100%;
 }
 </style>
 <body <?php body_class(); ?>>
@@ -20,12 +27,14 @@
     <div class="header-inner">
         <!-- Logo Section -->
         <div class="site-logo">
-            <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
-                the_custom_logo();
-            } else { ?>
-                <h1><?php bloginfo( 'name' ); ?></h1>
-            <?php } ?>
-        </div>
+    <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
+        $logo_width = get_theme_mod('logo_width', 250);
+        $logo_height = get_theme_mod('logo_height', 60);
+        the_custom_logo();
+    } else { ?>
+        <h1><?php bloginfo( 'name' ); ?></h1>
+    <?php } ?>
+</div>
 
         <!-- Primary Menu -->
         <nav class="main-navigation">

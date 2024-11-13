@@ -226,43 +226,77 @@ function sacuvaj_custom_reading_time_polje($post_id) {
 }
 add_action('save_post', 'sacuvaj_custom_reading_time_polje');
 
-function mytheme_customize_register( $wp_customize ) {
-    // Add a section for Footer settings
-    $wp_customize->add_section( 'footer_section' , array(
-        'title'      => __( 'Footer', 'mytheme' ),
-        'priority'   => 130,
-    ) );
+function mytheme_customize_register($wp_customize) {
+    // Header & Footer section
+    $wp_customize->add_section('header_footer_colors', array(
+        'title'    => __('Header & Footer', 'mytheme'),
+        'priority' => 30,
+    ));
 
-    // Add a setting for footer background color
-    $wp_customize->add_setting( 'footer_background_color', array(
-        'default'     => '#333', // Default color
-        'transport'   => 'refresh',
-    ) );
+    // Header Background Color
+    $wp_customize->add_setting('header_background_color', array(
+        'default'   => '#333333',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'header_background_color', array(
+        'label'    => __('Header Background Color', 'mytheme'),
+        'section'  => 'header_footer_colors',
+    )));
 
-    // Add a control to select the footer background color
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'footer_background_color_control', array(
-        'label'        => __( 'Footer Background Color', 'mytheme' ),
-        'section'      => 'footer_section',
-        'settings'     => 'footer_background_color',
-    ) ) );
+    // Footer Background Color
+    $wp_customize->add_setting('footer_background_color', array(
+        'default'   => '#333333',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'footer_background_color', array(
+        'label'    => __('Footer Background Color', 'mytheme'),
+        'section'  => 'header_footer_colors',
+    )));
 
-    // Add a section for Header settings
-    $wp_customize->add_section( 'header_section' , array(
-        'title'      => __( 'Header', 'mytheme' ),
-        'priority'   => 120,
-    ) );
+    // Header Text Color
+    $wp_customize->add_setting('header_text_color', array(
+        'default'   => '#ffffff',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'header_text_color', array(
+        'label'    => __('Header Text Color', 'mytheme'),
+        'section'  => 'header_footer_colors',
+    )));
 
-    // Add a setting for header background color
-    $wp_customize->add_setting( 'header_background_color', array(
-        'default'     => '#f8f9fa', // Default color
-        'transport'   => 'refresh',
-    ) );
+    // Footer Text Color
+    $wp_customize->add_setting('footer_text_color', array(
+        'default'   => '#ffffff',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'footer_text_color', array(
+        'label'    => __('Footer Text Color', 'mytheme'),
+        'section'  => 'header_footer_colors',
+    )));
 
-    // Add a control to select the header background color
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_background_color_control', array(
-        'label'        => __( 'Header Background Color', 'mytheme' ),
-        'section'      => 'header_section',
-        'settings'     => 'header_background_color',
-    ) ) );
+    // Logo Width
+    $wp_customize->add_setting('logo_width', array(
+        'default'   => 250,
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control('logo_width', array(
+        'type'     => 'number',
+        'section'  => 'header_footer_colors',
+        'label'    => __('Logo Width', 'mytheme'),
+        'description' => __('Adjust the width of the logo.'),
+        'input_attrs' => array('min' => 50, 'max' => 500),
+    ));
+
+    // Logo Height
+    $wp_customize->add_setting('logo_height', array(
+        'default'   => 60,
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control('logo_height', array(
+        'type'     => 'number',
+        'section'  => 'header_footer_colors',
+        'label'    => __('Logo Height', 'mytheme'),
+        'description' => __('Adjust the height of the logo.'),
+        'input_attrs' => array('min' => 50, 'max' => 500),
+    ));
 }
-add_action( 'customize_register', 'mytheme_customize_register' );
+add_action('customize_register', 'mytheme_customize_register');
