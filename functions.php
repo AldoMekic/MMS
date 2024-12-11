@@ -73,6 +73,7 @@ function my_theme_enqueue_styles() {
     wp_enqueue_style( 'archive-styles', get_template_directory_uri() . '/inc/css/archive.css' );
     wp_enqueue_style( 'content-styles', get_template_directory_uri() . '/inc/css/content.css' );
     wp_enqueue_style( 'post-styles', get_template_directory_uri() . '/inc/css/post.css' );
+    wp_enqueue_style( 'sidebar-styles', get_template_directory_uri() . '/inc/css/sidebar.css' ); // Enqueue sidebar styles
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
@@ -233,6 +234,12 @@ function mytheme_customize_register($wp_customize) {
         'priority' => 30,
     ));
 
+    // Sidebar section
+    $wp_customize->add_section('sidebar', array(
+        'title'    => __('Sidebar', 'mytheme'),
+        'priority' => 30,
+    ));
+
     // Header Background Color
     $wp_customize->add_setting('header_background_color', array(
         'default'   => '#333333',
@@ -322,6 +329,30 @@ function mytheme_customize_register($wp_customize) {
         'section'  => 'header_footer_colors',
         'settings' => 'footer_highlight_color',
     )));
+
+     // Sidebar Link Hover Color
+     $wp_customize->add_setting( 'sidebar_hover_color', array(
+        'default'           => '#0073aa',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'sidebar_hover_color', array(
+        'label'    => __( 'Sidebar Link Hover Color', 'my_theme' ),
+        'section'  => 'sidebar',
+        'settings' => 'sidebar_hover_color',
+    ) ) );
+
+    // Sidebar Link Border Color
+    $wp_customize->add_setting( 'sidebar_border_color', array(
+        'default'           => '#0073aa',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'sidebar_border_color', array(
+        'label'    => __( 'Sidebar Border Color', 'my_theme' ),
+        'section'  => 'sidebar',
+        'settings' => 'sidebar_border_color',
+    ) ) );
 }
 add_action('customize_register', 'mytheme_customize_register');
 
