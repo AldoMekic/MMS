@@ -19,7 +19,17 @@
     height: <?php echo get_theme_mod('logo_height', 60); ?>px;
     max-width: 100%;
     max-height: 100%;
+    }
+
+    .main-navigation .primary-menu a.active,
+.main-navigation .primary-menu a:hover {
+    color: <?php echo get_theme_mod('header_highlight_color', '#ffcc00'); ?>;
 }
+
+.main-navigation .primary-menu .current-menu-item a {
+    color: <?php echo get_theme_mod('header_highlight_color', '#ffcc00'); ?>;
+}
+
 </style>
 <body <?php body_class(); ?>>
 
@@ -42,6 +52,7 @@
             wp_nav_menu( array(
                 'theme_location' => 'primary',
                 'menu_class'     => 'primary-menu',
+                'add_li_class'   => 'current-menu-item', // This ensures the class is applied.
             ) );
             ?>
         </nav>

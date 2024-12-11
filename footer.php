@@ -13,6 +13,14 @@
     max-height: 100%;
 }
 
+.footer-navigation .footer-menu a.active,
+.footer-navigation .footer-menu a:hover {
+    color: <?php echo get_theme_mod('footer_highlight_color', '#ffcc00'); ?>;
+}
+
+.footer-navigation .footer-menu .current-menu-item a {
+    color: <?php echo get_theme_mod('footer_highlight_color', '#ffcc00'); ?>;
+}
 </style>
 
 <footer id="footer" class="site-footer">
@@ -34,6 +42,7 @@
             wp_nav_menu( array(
                 'theme_location' => 'footer',
                 'menu_class'     => 'footer-menu',
+                'add_li_class'   => 'current-menu-item', // Adds the active class.
             ) );
             ?>
         </nav>

@@ -298,5 +298,37 @@ function mytheme_customize_register($wp_customize) {
         'description' => __('Adjust the height of the logo.'),
         'input_attrs' => array('min' => 50, 'max' => 500),
     ));
+
+    // Header Highlight Color
+    $wp_customize->add_setting('header_highlight_color', array(
+        'default'   => '#ffcc00',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'header_highlight_color', array(
+        'label'    => __('Header Highlight Color', 'my_theme'),
+        'section'  => 'header_footer_colors',
+        'settings' => 'header_highlight_color',
+    )));
+
+    // Footer Highlight Color
+    $wp_customize->add_setting('footer_highlight_color', array(
+        'default'   => '#ffcc00',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport' => 'refresh',
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'footer_highlight_color', array(
+        'label'    => __('Footer Highlight Color', 'my_theme'),
+        'section'  => 'header_footer_colors',
+        'settings' => 'footer_highlight_color',
+    )));
 }
 add_action('customize_register', 'mytheme_customize_register');
+
+function add_active_class_to_menu_items($classes, $item) {
+    if (in_array('current-menu-item', $classes)) {
+        $classes[] = 'active';
+    }
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'add_active_class_to_menu_items', 10, 2);
