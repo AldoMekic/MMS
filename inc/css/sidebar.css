@@ -7,3 +7,56 @@
     margin: 10px 0;
 }
 
+#secondary {
+    position: absolute;
+    right: 0;
+    top: 150px; /* Adjust this to match the height of your header */
+    width: 250px;
+    height: calc(100% - 150px); /* Adjust height to account for header */
+    overflow-y: auto; /* Adds scroll for long content */
+    transition: width 0.3s ease; /* Smooth transition for resizing */
+}
+
+.content-area {
+    margin-right: 260px; /* Ensure main content doesn't overlap with the sidebar */
+    transition: margin-right 0.3s ease; /* Smooth transition for content resizing */
+}
+
+@media (max-width: 1024px) {
+    #secondary {
+        width: 200px; /* Reduce sidebar width on medium screens */
+        margin-top: 20px;
+    }
+
+    .content-area {
+        margin-right: 220px; /* Adjust content to prevent overlap */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        flex-direction: column; /* Stack content and sidebar vertically */
+    }
+
+    #secondary {
+        position: static; /* Sidebar will flow with content on small screens */
+        width: 100%; /* Full width on small screens */
+        margin-top: 20px; /* Adds space between content and sidebar */
+        height: auto; /* Adjust height to fit content */
+    }
+
+    .content-area {
+        margin-right: 0; /* Remove the right margin when sidebar is below */
+    }
+}
+
+@media (max-width: 480px) {
+    #secondary {
+        width: 100%; /* Sidebar takes full width on very small screens */
+        padding: 10px; /* Reduce padding on very small screens */
+    }
+
+    .content-area {
+        padding: 10px; /* Adjust content padding for smaller devices */
+    }
+}
